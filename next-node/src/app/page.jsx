@@ -10,8 +10,8 @@ export default function Home() {
   const [posts, setPosts] = useState([]);
   const [tapFilter, setTapFilter] = useState(null);
   // const [display, setDisplay] = useState('block');
-  const BASE_URL = "http://localhost:4000/api/posts";
 
+  const BASE_URL = `http://localhost:4000/api/posts`;
   useEffect(() => {
     const fetchposts = async () => {
       try {
@@ -29,27 +29,24 @@ export default function Home() {
 
     fetchposts();
   }, []);
-
-  const handleTapClick = (tap) => {
-    if (tap !== tapFilter) {
-      setTapFilter(tap);
-    } else {
-      setTapFilter(null);
-    }
-  };
   console.log(tapFilter);
 
-  let revers = posts.reverse();
+  let filteredPost;
+  if (tapFilter != null) {
+    filteredPost = posts.filter((post) => post.tap === tapFilter);
+  } else {
+    filteredPost = posts;
+  }
 
   return (
     <>
       <div className="container">
-        <Tap></Tap>
+        <Tap setTapFilter={setTapFilter}></Tap>
         <Link href={"/write"}>
           <button>글쓰기</button>
         </Link>
         <ul className="posts">
-          {posts.map((post, index) => (
+          {filteredPost.map((post, index) => (
             <Post
               key={post.id}
               id={post.id}

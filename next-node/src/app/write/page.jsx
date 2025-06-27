@@ -51,18 +51,21 @@ export default function Home() {
         <h1>글쓰기</h1>
         <Tap change={(e) => change(e)} tapState={tap}></Tap>
         <input
+          className="title_input"
           type="text"
           placeholder="제목"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
         <input
+          className="user_input"
           type="text"
           placeholder="작성자"
           value={user}
           onChange={(e) => setUser(e.target.value)}
         />
-        <input
+        <textarea
+          className="content_textarer"
           type="text"
           placeholder="내용"
           value={content}

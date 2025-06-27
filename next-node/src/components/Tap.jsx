@@ -2,18 +2,26 @@
 
 import { useEffect, useState } from "react";
 
-const Tap = ({ change, tapState }) => {
+const Tap = ({ change, tapState, setTapFilter }) => {
   const [tap, setTap] = useState(null);
   useEffect(() => {
     if (tapState) {
+      setTap(tapState);
     }
-    setTap(tapState);
   }, []);
   const tapChange = (e) => {
     console.log(e.target.id);
     let targetId = e.target.id;
     if (tap !== targetId) {
       setTap(targetId);
+      if (setTapFilter != null) {
+        setTapFilter(targetId);
+      }
+    } else if (tapState == null) {
+      setTap(null);
+      if (setTapFilter != null) {
+        setTapFilter(null);
+      }
     }
   };
 

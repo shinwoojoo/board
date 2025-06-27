@@ -7,7 +7,7 @@ const Post = ({ id, tap = "일반", title = 1234567890, user = "익명" }) => {
 
   return (
     <li
-      className="posts-list"
+      className={`posts-list ${tap}`}
       id={id}
       onClick={() => router.push(`/view?id=${id}`)}
     >

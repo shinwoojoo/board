@@ -71,3 +71,16 @@
   flex-direction: column;
   gap: 10px;
 }
+
+/* write */
+
+.title_input,
+.user_input {
+  padding: 10px;
+  font-size: 16px;
+}
+.content_textarer {
+  height: 50%;
+  padding: 10px;
+  font-size: 16px;
+}
